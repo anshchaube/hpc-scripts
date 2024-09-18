@@ -5,16 +5,15 @@
 #SBATCH --job-name=buildnrs
 #SBATCH --time=0:30:00
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=2
-#SBATCH --gpus-per-task=1
-#SBATCH --gpu-bind=closest
+#SBATCH --ntasks=32
+#SBATCH --gpus=1
 #SBATCH --exclusive
 #SBATCH --account=ebm5351_b_gpu
 #SBATCH --partition=sla-prio
 
 module purge
-#module load openmpi/4.1.1-pmi2
-module load openmpi/5.0.3 #- executes N serial jobs
+module load openmpi/4.1.1-pmi2
+#module load openmpi/5.0.3 #- executes N serial jobs
 
 module load gcc/9.1.0
 export GCC_DIR=/storage/icds/RISE/sw8/gcc/gcc-9.1.0/bin/
