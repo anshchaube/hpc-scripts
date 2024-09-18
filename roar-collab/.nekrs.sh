@@ -3,7 +3,7 @@ module purge
 
 #module load openmpi/5.0.3 #- executes N serial jobs
 #module load openmpi/4.1.4 #- pmi complaint
-module load openmpi/4.1.1-pmi2 # interactive jobs only, random segfault in setup - bad ompi_communicator?
+module load openmpi/4.1.1-pmi2 # run with mpirun only, do not use srun
 module load gcc/9.1.0
 export GCC_DIR=/storage/icds/RISE/sw8/gcc/gcc-9.1.0/bin/
 
