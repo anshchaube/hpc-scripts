@@ -5,7 +5,7 @@ module purge
 #module load openmpi/4.1.4 #- pmi complaint
 module load openmpi/4.1.1-pmi2 # run with mpirun only, do not use srun
 module load gcc/9.1.0
-export GCC_DIR=/storage/icds/RISE/sw8/gcc/gcc-9.1.0/bin/
+export GCC_DIR=/storage/icds/RISE/sw8/gcc/gcc-9.1.0/bin
 
 export PATH=$GCC_DIR:$PATH 
 export OMPI_CC=$GCC_DIR/gcc
