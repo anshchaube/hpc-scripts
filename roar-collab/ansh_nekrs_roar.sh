@@ -35,7 +35,7 @@ echo "module purge" >> $CMDFILE
 echo "module load openmpi/4.1.1-pmi2" >> $CMDFILE
 echo "" >> $CMDFILE
 echo "module load gcc/9.1.0" >> $CMDFILE
-echo "export GCC_DIR=/storage/icds/RISE/sw8/gcc/gcc-9.1.0/bin/" >> $CMDFILE
+echo "export GCC_DIR=/storage/icds/RISE/sw8/gcc/gcc-9.1.0/bin" >> $CMDFILE
 echo "export PATH=\$GCC_DIR:\$PATH " >> $CMDFILE
 echo "export OMPI_CC=\$GCC_DIR/gcc" >> $CMDFILE
 echo "export OMPI_CXX=\$GCC_DIR/g++" >> $CMDFILE
