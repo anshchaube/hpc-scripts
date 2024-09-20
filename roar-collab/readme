@@ -1,0 +1,7 @@
+For the first build, load the suggested anaconda module.
+Create a conda environment and activate (default name in scripts - Cardinal)
+Tie it to python v3.11.2 as used on roar (caution? superstition? i don't know)
+conda install pyaml jinja2 packaging (source:https://mooseframework.inl.gov/getting_started/installation/hpc_install_moose.html)
+
+Proceed to compile cardinal using the build script.
+bashrc setup should be optional since the scripts have everything you need.
