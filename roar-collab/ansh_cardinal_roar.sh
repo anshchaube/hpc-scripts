@@ -55,7 +55,7 @@ echo "" >> $CMDFILE
 echo "export CC=mpicc CXX=mpicxx FC=mpif90 F90=mpif90 F77=mpif77" >> $CMDFILE
 echo "" >> $CMDFILE
 #echo "srun -n $ntasks $bin --backend CUDA --device-id 0 --setup $case &> logfile" >> $CMDFILE # don't use! segfaults!
-echo "mpirun -np $ntasks $bin -i $case\.i --nekrs-setup $nrscase --nekrs-backend CUDA --nekrs-device-id 0 &> logfile" >> $CMDFILE
+echo "mpirun -np $ntasks $bin -i $case.i --nekrs-setup $nrscase --nekrs-backend CUDA --nekrs-device-id 0 &> logfile" >> $CMDFILE
 
 sbatch $CMDFILE
 squeue -u `whoami`
