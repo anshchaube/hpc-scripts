@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ $# -lt 3 ] || [ $# -gt 5 ]; then
-  echo "usage:$0 <casename> <no. of nodes> <time>  [<cpus/node=32>] [<min mem=64 GB>]"
+if [ $# -lt 3 ] || [ $# -gt 6 ]; then
+  echo "usage:$0 <casename> <no. of nodes> <time>  [<cpus/node=32>] [<min mem=64 GB>] [<partition=open> ]"
   exit 0
 fi
 
@@ -10,6 +10,7 @@ nnodes=$2
 time=$3
 ncpus_per_node=${4:-32} # 48 total, don't saturate
 mem="${5:-64G}" #min memory reqd, the max is 380G per node, system default for mem param - 4GB
+part="${6:-open}" # open partition for CPU only nodes
 
 ntasks=$((nnodes*ncpus_per_node))
 
@@ -21,16 +22,16 @@ echo "#SBATCH --time=$time" >> $CMDFILE
 echo "#SBATCH --nodes=$nnodes" >> $CMDFILE
 echo "#SBATCH --ntasks-per-node=$ncpus_per_node" >> $CMDFILE
 echo "#SBATCH --mem=$mem" >> $CMDFILE # TODO: further tests
-echo "#SBATCH --exclusive" >> $CMDFILE
-echo "#SBATCH --account=ebm5351_b_gpu" >> $CMDFILE
-echo "#SBATCH --partition=sla-prio" >> $CMDFILE
+# echo "#SBATCH --exclusive" >> $CMDFILE # if using this, please maximize node usage
+# echo "#SBATCH --account=ebm5351_b_gpu" >> $CMDFILE # submits to GPU nodes - not recommended for Nek5000 runs
+echo "#SBATCH --partition=$part" >> $CMDFILE
 echo "" >> $CMDFILE
 
 echo "module purge" >> $CMDFILE
 echo "module load openmpi/4.1.1-pmi2" >> $CMDFILE
 echo "" >> $CMDFILE
 echo "module load gcc/9.1.0" >> $CMDFILE
-echo "export GCC_DIR=/storage/icds/RISE/sw8/gcc/gcc-9.1.0/bin" >> $CMDFILE
+echo "export GCC_DIR=/storage/icds/RISE/sw8/gcc/gcc-9.1.0/bin/" >> $CMDFILE
 echo "export PATH=\$GCC_DIR:\$PATH " >> $CMDFILE
 echo "export OMPI_CC=\$GCC_DIR/gcc" >> $CMDFILE
 echo "export OMPI_CXX=\$GCC_DIR/g++" >> $CMDFILE
