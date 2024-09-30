@@ -1,4 +1,4 @@
-Overview
+## Overview
 
 The group has the following usage limits: 10 GPUs max at a time, 240 CPUs max at a time.
 There is no limit on how many nodes you can request.
@@ -29,12 +29,14 @@ preferred variables in a bash or SLURM job script, especially if running multipl
  of Nek or Cardinal.
 
 ###############################################################################
-Nek5000
+
+## Nek5000
 
 Use the script `nek5k_roar.sh` to run. `nek5k.sh` has env variables.
 
 ###############################################################################
-NekRS
+
+## NekRS
 
 The script to build NekRS is `build.slurm`. Note that the login and GPU nodes have
 a different setup. Compiling on login nodes then running on GPU nodes causes errors.
@@ -43,7 +45,8 @@ a different setup. Compiling on login nodes then running on GPU nodes causes err
 `nekrs_roar.sh` runs jobs.
 
 ###############################################################################
-Cardinal
+
+## Cardinal
 
 Prior to the first build, load the suggested anaconda module.
 
