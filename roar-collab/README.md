@@ -28,13 +28,9 @@ the job or build scripts. Consider having a clean `bashrc` and just setting your
 preferred variables in a bash or SLURM job script, especially if running multiple versions
  of Nek or Cardinal.
 
-###############################################################################
-
 ## Nek5000
 
 Use the script `nek5k_roar.sh` to run. `nek5k.sh` has env variables.
-
-###############################################################################
 
 ## NekRS
 
@@ -43,8 +39,6 @@ a different setup. Compiling on login nodes then running on GPU nodes causes err
  Please use the script to build NekRS on a GPU node.
 
 `nekrs_roar.sh` runs jobs.
-
-###############################################################################
 
 ## Cardinal
 
