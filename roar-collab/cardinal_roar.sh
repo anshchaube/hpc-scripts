@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $# -lt 4 ] || [ $# -gt 6 ]; then
+if [ $# -lt 3 ] || [ $# -gt 6 ]; then
   echo "usage:$0 <moose file, without \.i> <no. of nodes> <time> [<nekrs case=cardinal input>] [<gpus/node=2>] [<min mem=64 GB>]"
   exit 0
 fi

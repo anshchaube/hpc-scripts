@@ -5,9 +5,8 @@
 #SBATCH --job-name=buildnrs
 #SBATCH --time=0:30:00
 #SBATCH --nodes=1
-#SBATCH --ntasks=32
+#SBATCH --ntasks=12
 #SBATCH --gpus=1
-#SBATCH --exclusive
 #SBATCH --account=ebm5351_b_gpu
 #SBATCH --partition=sla-prio
 
@@ -29,6 +28,6 @@ export CC=mpicc
 export CXX=mpic++
 export FC=mpif77
 
-export NEKRS_HOME=/storage/home/afc6440/work/nekrs-install
+export NEKRS_HOME=$(realpath -P /storage/home/afc6440/work/nekrs-install)
 cd /storage/home/afc6440/work/nekRS
 echo | CC=mpicc CXX=mpic++ FC=mpif77 ./nrsconfig -DCMAKE_INSTALL_PREFIX=$NEKRS_HOME

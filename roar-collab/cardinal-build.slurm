@@ -4,7 +4,6 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=32
 #SBATCH --gpus=1
-#SBATCH --exclusive
 #SBATCH --account=ebm5351_b_gpu
 #SBATCH --partition=sla-prio
 
@@ -22,6 +21,7 @@ export OMPI_CXX=$GCC_DIR/g++
 export OMPI_FC=$GCC_DIR/gfortran
 
 module load cuda/11.5.0 # only works with gcc 9, no gcc 10 or 11 available
+export OCCA_CUDA_ENABLED=1
 module load cmake/3.21.4
 #module load python/3.11.2
 
@@ -30,9 +30,9 @@ export ENABLE_OPENMC=false
 
 export CARDINAL_DIR=$(realpath -P /storage/home/afc6440/work/cardinal)
 export NEKRS_HOME=$CARDINAL_DIR/install
-export PYTHONPATH=$CARDINAL_DIR/contrib/moose/python
-export MOOSE_DIR=$CARDINAL_DIR/contrib/moose
-export LIBMESH_DIR=$MOOSE_DIR/libmesh
+# export PYTHONPATH=$CARDINAL_DIR/contrib/moose/python
+# export MOOSE_DIR=$CARDINAL_DIR/contrib/moose
+# export LIBMESH_DIR=$MOOSE_DIR/libmesh
 
 export JOBS=32
 export LIBMESH_JOBS=32

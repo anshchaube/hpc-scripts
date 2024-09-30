@@ -8,12 +8,10 @@ fi
 case=$1
 nnodes=$2
 time=$3
-ngpus_per_node=${4:-2} # in case you want to run in serial
-ncpus_per_node=32 # 48, don't saturate, in case you want to run on cpus
-mem="${5:-64G}" #min memory reqd, the max is 380G per node, system default for mem param - 4GB
+ngpus_per_node=${4:-2}
+mem="${5:-64G}" #min memory reqd
 
 ntasks=$((nnodes*ngpus_per_node))
-#ntasks=$((nnodes*ncpus_per_node)) # could add an additional param to control this, but meh
 
 CMDFILE=$1.slurm
 bin=${NEKRS_HOME}/bin/nekrs
