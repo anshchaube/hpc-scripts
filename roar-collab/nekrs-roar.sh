@@ -41,7 +41,7 @@ else
 fi
 
 echo "#!/bin/bash" > $CMDFILE
-echo "#SBATCH --job-name=$case" >> $CMDFILE
+echo "#SBATCH --job-name=$nrs_case" >> $CMDFILE
 echo "#SBATCH --time=$time" >> $CMDFILE
 echo "#SBATCH --nodes=$nnodes" >> $CMDFILE
 echo "#SBATCH --ntasks-per-node=$tasks_per_node" >> $CMDFILE
@@ -82,7 +82,7 @@ echo "export FC=mpif77" >> $CMDFILE
 echo "" >> $CMDFILE
 
 #echo "srun -n $ntasks $bin --backend CUDA --device-id 0 --setup $case &> logfile" >> $CMDFILE # don't use! segfaults!
-echo "mpirun -n $ntasks $bin --backend CUDA --device-id 0 --setup $nrs_case &> logfile" >> $CMDFILE
+echo "mpirun -n $ntasks $bin --backend CUDA --device-id 0 --setup $nrs_case" >> $CMDFILE
 
 sbatch $CMDFILE
 squeue -u `whoami`
