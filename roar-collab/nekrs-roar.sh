@@ -26,7 +26,7 @@ ntasks=$((nnodes*tasks_per_node))
 nrs_case=""
 
 if [ $# -eq 4 ]; then
-  nrs_case=${5}
+  nrs_case=${4}
 else
   if [ ! -f $PWD/*.par ]; then
       echo "No NekRS par file detected! ABORT"
