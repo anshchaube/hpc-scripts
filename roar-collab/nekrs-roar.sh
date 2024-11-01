@@ -25,7 +25,7 @@ ntasks=$((nnodes*tasks_per_node))
 
 nrs_case=""
 
-if [ $# -eq 5 ]; then
+if [ $# -eq 4 ]; then
   nrs_case=${5}
 else
   if [ ! -f $PWD/*.par ]; then
