@@ -39,8 +39,8 @@ cd $CARDINAL_DIR
 
 # clean install
 rm *.log
-rm -rf build/ 
-rm -rf install/ 
+rm -rf build/
+rm -rf install/
 rm -rf contrib/*
 
 ./scripts/get-dependencies.sh > dep.log
