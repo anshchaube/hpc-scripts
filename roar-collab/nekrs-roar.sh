@@ -82,7 +82,7 @@ echo "export FC=mpif77" >> $CMDFILE
 echo "" >> $CMDFILE
 
 #echo "srun -n $ntasks $bin --backend CUDA --device-id 0 --setup $case &> logfile" >> $CMDFILE # don't use! segfaults!
-echo "mpirun -n $ntasks $bin --backend CUDA --device-id 0 --setup $case &> logfile" >> $CMDFILE
+echo "mpirun -n $ntasks $bin --backend CUDA --device-id 0 --setup $nrs_case &> logfile" >> $CMDFILE
 
 sbatch $CMDFILE
 squeue -u `whoami`
