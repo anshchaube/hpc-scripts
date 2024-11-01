@@ -89,13 +89,6 @@ echo "" >> $CMDFILE
 echo "export CC=mpicc" >> $CMDFILE
 echo "export CXX=mpic++" >> $CMDFILE
 echo "export FC=mpif77" >> $CMDFILE
-
-echo "" >> $CMDFILE
-echo "export GCC_DIR=/storage/icds/RISE/sw8/gcc/gcc-9.1.0/bin/" >> $CMDFILE
-echo "export PATH=\$GCC_DIR:\$PATH " >> $CMDFILE
-echo "export OMPI_CC=\$GCC_DIR/gcc" >> $CMDFILE
-echo "export OMPI_CXX=\$GCC_DIR/g++" >> $CMDFILE
-echo "export OMPI_FC=\$GCC_DIR/gfortran" >> $CMDFILE
 echo "" >> $CMDFILE
 
 #echo "srun -n $ntasks $bin --backend CUDA --device-id 0 --setup $case &> logfile" >> $CMDFILE # don't use! segfaults!
