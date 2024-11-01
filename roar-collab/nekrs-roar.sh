@@ -52,22 +52,12 @@ elif [[ $EXCL_MODE -eq 0 && $nrs_check ]]; then
   echo "#SBATCH --cpus-per-gpu=1"  >> $CMDFILE # allows you to request more GPUs w/o hitting CPU limit on roar
 fi
 
-if $nrs_check; then
-  echo "#SBATCH --gpus-per-task=1" >> $CMDFILE
-  echo "#SBATCH --gpu-bind=closest" >> $CMDFILE
-  echo "#SBATCH --account=ebm5351_b_gpu" >> $CMDFILE
-  echo "#SBATCH --partition=sla-prio" >> $CMDFILE
-  if [ "$MEM_PER_TASK" != "NULL" ]; then
-    echo "#SBATCH --mem-per-gpu=$MEM_PER_TASK" >> $CMDFILE
-  fi
-else
-  echo "#SBATCH --cpus-per-task=1" >> $CMDFILE
-  echo "#SBATCH --account=ebm5351_b_gpu" >> $CMDFILE # will need GPU node if cardinal compiled with GPU support
-  echo "#SBATCH --partition=sla-prio" >> $CMDFILE
-#  echo "#SBATCH --partition=open" >> $CMDFILE # use the open partition you compiled cardinal without gpu support, change cardinal_dir accordingly
-  if [ "$MEM_PER_TASK" != "NULL" ]; then
-    echo "#SBATCH --mem-per-cpu=$MEM_PER_TASK" >> $CMDFILE
-  fi
+echo "#SBATCH --gpus-per-task=1" >> $CMDFILE
+echo "#SBATCH --gpu-bind=closest" >> $CMDFILE
+echo "#SBATCH --account=ebm5351_b_gpu" >> $CMDFILE
+echo "#SBATCH --partition=sla-prio" >> $CMDFILE
+if [ "$MEM_PER_TASK" != "NULL" ]; then
+  echo "#SBATCH --mem-per-gpu=$MEM_PER_TASK" >> $CMDFILE
 fi
 echo "" >> $CMDFILE
 
