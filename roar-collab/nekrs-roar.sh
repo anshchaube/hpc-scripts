@@ -6,9 +6,9 @@
 
 if [ $# -lt 2 ] || [ $# -gt 4 ]; then
   echo "usage:$0 <no. of nodes> <walltime hh:mm:ss> [<gpus/cpus per node=2>] [nek_par_name]"
-  echo "One NekRS .par file detected automatically and supplied to cardinal-opt if script is in input-file dir."
+  echo "One NekRS .par file detected automatically and supplied"
   echo "Multiple pars in same dir - supply 4th argument."
-  echo "Default value of 3rd argument optimized for GPUs per node. For non-NekRS runs, adjust accordingly to maximize CPU usage!"
+  echo "Default value of 3rd argument optimized for GPUs per node."
   exit 0
 fi
 
