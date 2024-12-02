@@ -21,9 +21,9 @@ export ENABLE_OPENMC=false
 export CARDINAL_DIR=$(realpath -P /lustre/orion/scratch/achaube/cfd202/cardinal)
 export NEKRS_HOME=$CARDINAL_DIR/install
 echo "Default MOOSE python path:${PYTHONPATH}"
-export PYTHONPATH=$CARDINAL_DIR/contrib/moose/python
+export PYTHONPATH=$CARDINAL_DIR/contrib/moose/python:$PYTHONPATH
 export MOOSE_DIR=$CARDINAL_DIR/contrib/moose
-export LIBMESH_DIR=$MOOSE_DIR/libmesh
+export LIBMESH_DIR=$MOOSE_DIR/libmesh/installed
 
 echo $CARDINAL_DIR
 echo $NEKRS_HOME
@@ -46,6 +46,12 @@ rm -rf contrib/*
 ./scripts/get-dependencies.sh > dep.log
 
 ./contrib/moose/scripts/update_and_rebuild_petsc.sh &> petsc.log
+
+# libmesh error fix: https://github.com/idaholab/moose/discussions/18868
+cd contrib/moose/libmesh
+git submodule sync
+cd $CARDINAL_DIR
+
 ./contrib/moose/scripts/update_and_rebuild_libmesh.sh --enable-xdr-required --with-xdr-include=/usr/include --with-vexcl=no &> libmesh.log
 ./contrib/moose/scripts/update_and_rebuild_wasp.sh &> wasp.log
 
