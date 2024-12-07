@@ -29,5 +29,5 @@ export CXX=mpic++
 export FC=mpif77
 
 export NEKRS_HOME=$(realpath -P /storage/home/afc6440/work/nekrs-install)
-cd /storage/home/afc6440/work/nekRS
+cd $NEKRS_HOME
 echo | CC=mpicc CXX=mpic++ FC=mpif77 ./nrsconfig -DCMAKE_INSTALL_PREFIX=$NEKRS_HOME
