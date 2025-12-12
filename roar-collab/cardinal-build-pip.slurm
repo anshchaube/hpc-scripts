@@ -47,15 +47,15 @@ export ENABLE_OPENMC=false # takes care of any lingering `true` values, not need
 
 cd $CARDINAL_DIR
 
-# rm *.log
-# rm -rf contrib/moose
-# rm -rf build/ install/
-# 
-# ./scripts/get-dependencies.sh &> dependency.log
-# 
-# ./contrib/moose/scripts/update_and_rebuild_petsc.sh &> petsc-build.log
-# ./contrib/moose/scripts/update_and_rebuild_libmesh.sh &> libmesh-build.log
-# ./contrib/moose/scripts/update_and_rebuild_wasp.sh &> wasp-build.log
-# 
+rm *.log
+rm -rf contrib/moose
+rm -rf build/ install/
+
+./scripts/get-dependencies.sh &> dependency.log
+
+./contrib/moose/scripts/update_and_rebuild_petsc.sh &> petsc-build.log
+./contrib/moose/scripts/update_and_rebuild_libmesh.sh &> libmesh-build.log
+./contrib/moose/scripts/update_and_rebuild_wasp.sh &> wasp-build.log
+
 make -j $JOBS OCCA_CUDA_ENABLED=$OCCA_CUDA_ENABLED &> opt-make.log # cardinal-opt
 METHOD=dbg make -j $JOBS OCCA_CUDA_ENABLED=$OCCA_CUDA_ENABLED &> dbg-make.log # cardinal-dbg

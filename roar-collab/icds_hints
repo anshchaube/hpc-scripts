@@ -1,0 +1,61 @@
+### build done on p-gc-3012 because libcuda.so.1 is needed and only present in /lib of GPU nodes image  
+
+## Module load
+
+```
+ml load openmpi/5.0.3 cmake/3.26.3 cuda/11.5.0 gcc/13.2.0
+```
+
+Warning there is a potential conflict between nvcc V11.5.50 and gcc 13.2 arising during the OCCA testing steps
+
+## Install OCCA and OCCA module set up
+
+```
+$ git clone https://github.com/libocca/occa
+```
+commit c0c601f80eff8f4eb7cc453a6a9db5bdd6554495
+
+```
+$ ./configure-cmake.sh
+$ cmake --build build --parallel <number-of-threads>
+```
+(copy paste https://github.com/libocca/occa/blob/main/INSTALL.md
+
+Commandline installation of OCCA can be accomplished with the following:
+```shell
+$ cmake --install BUILD_DIR --prefix INSTALL_DIR
+```
+During installation, the nv module file `INSTALL_DIR/modulefiles/occa` is generated. When this module is loaded, paths to the installed `bin`, `lib`, and `include` directories are appended to environment variables such as `PATH` and `LD_LIBRARY_PATH`. 
+To make use of this module, add the following to your `.modulerc` file
+```
+$ module use -a INSTALL_DIR/modulefiles
+```
+ then at the commandline call
+```shell
+$ module load occa
+```
+
+## Install nekRS
+
+```
+$ git clone https://github.com/Nek5000/nekRS
+````
+commit 4f87e0e2ec0492e2a3edf27791252d6886814d00 Date:   Tue May 30 09:36:13 2023 +0200
+
+Porting issue with gcc 13 https://gcc.gnu.org/gcc-13/porting_to.html  
+Add the following line  
+```
+#include <cstdint> 
+```
+To   
+/nekRS/3rd_party/occa/src/occa/internal/modes/dpcpp/polyfill.hpp
+
+```
+$ CC=mpicc CXX=mpic++ FC=mpif77 ./nrsconfig \
+-DCMAKE_INSTALL_PREFIX=/scratch/sld5866/nekrs \
+-DCMAKE_PREFIX_PATH=/storage/icds/RISE/sw8/openmpi/5.0.3/bin/mpicc \
+-DCMAKE_CXX_COMPILER=/storage/icds/RISE/sw8/openmpi/5.0.3/bin/mpicxx
+```
+
+
+
